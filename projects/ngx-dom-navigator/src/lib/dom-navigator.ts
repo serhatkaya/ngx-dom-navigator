@@ -479,8 +479,7 @@ export class DomNavigator {
      * @param {string} direction The direction.
      * @return void
      */
-    private select(el, direction) {
-
+    public select(el, direction) {
         // Is there an element or is it selected?
         if (!el || el === this.$selected) {
             return; // Nothing to do here.
@@ -587,7 +586,7 @@ export class DomNavigator {
         return children;
     }
 
-    findCommonElement(array1, array2) {
+    private findCommonElement(array1, array2) {
 
         // Loop for array1
         for (let i = 0; i < array1.length; i++) {
