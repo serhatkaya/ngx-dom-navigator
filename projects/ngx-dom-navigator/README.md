@@ -1,24 +1,76 @@
-# NgxDomNavigator
+# ngx-dom-navigator
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
-## Code scaffolding
+## HTML Dom navigator library.
 
-Run `ng generate component component-name --project ngx-dom-navigator` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-dom-navigator`.
-> Note: Don't forget to add `--project ngx-dom-navigator` or else it will be added to the default project in your `angular.json` file. 
+Library that allow keyboard navigation through DOM elements (←↑→↓).
 
-## Build
+Enchanced version of [http://rmariuzzo.github.io/dom-navigator/](https://rmariuzzo.github.io/dom-navigator/)
 
-Run `ng build ngx-dom-navigator` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Publishing
+`npm install ngx-dom-navigator`
 
-After building your library with `ng build ngx-dom-navigator`, go to the dist folder `cd dist/ngx-dom-navigator` and run `npm publish`.
+## Usage
 
-## Running unit tests
+###### TS
 
-Run `ng test ngx-dom-navigator` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`import { DomNavigatorElement, DomNavigator } from 'ngx-dom-navigator';`
 
-## Further help
+`let container = document.querySelector('#context') as DomNavigatorElement;`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+`let navigator = new DomNavigator(container, { mode: DomNavigatorMode.auto, selectedClassName: 'selected' });`
+
+###### HTML
+
+```markdown
+<style>
+    ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-color: #3b4253;
+  overflow: hidden;
+  height: 300px;
+}
+
+li {
+  background-color: #283046;
+  border-color: #3b4253 !important;
+  color: #b4b7bd;
+  width: 50px;
+  position: relative;
+  margin: 0.25rem;
+  display: block;
+  padding: 1rem;
+  border: 1px solid rgba(34, 41, 47, 0.125);
+  float: left;
+  font-size: 16px;
+}
+
+li.selected {
+  background-color: #3aa8e0 !important;
+  color: #fff !important;
+}
+
+</style>
+<ul id="context">
+      <li (click)="click(code)"
+        *ngFor="let code of codes; let i = index"
+        [class]="i > 30 && i < 40 ? 'ignored-class' : ''">
+        {{ code }}
+      </li>
+</ul>
+```
+
+## Properties
+
+- mode: Navigation mode, auto, horizontal, vertical, grid.
+- selectedClassName: Selected element html class name.
+- left: Key code for left navigation.
+- right: Key code for right navigation.
+- down: Key code for down navigation.
+- up: Key code for up navigation.
+- select: Key code for trigger click event (default ENTER)
+- ignoredClassList: The classname you want to ignore for navigator.
