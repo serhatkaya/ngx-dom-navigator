@@ -191,6 +191,11 @@ export class DomNavigator {
         if (this.$keydownHandler) {
             this.$doc.removeEventListener('keydown', this.$keydownHandler);
         }
+        this.clearSelection();
+    }
+
+    clearSelection() {
+        this.$selected = null;
     }
 
     /**

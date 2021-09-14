@@ -74,3 +74,9 @@ li.selected {
 - up: Key code for up navigation.
 - select: Key code for trigger click event (default ENTER)
 - ignoredClassList: The classname you want to ignore for navigator.
+
+## Functions
+
+- enable: Enables the navigator.
+- disable: Disables the navigator and clears selection.
+- clearSelection: Clears the selection.
