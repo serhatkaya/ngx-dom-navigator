@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ngx-dom-navigator": {
+      "projectType": "library",
+      "root": "projects/ngx-dom-navigator",
+      "sourceRoot": "projects/ngx-dom-navigator/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ngx-dom-navigator/tsconfig.lib.json",
+            "project": "projects/ngx-dom-navigator/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-dom-navigator/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-dom-navigator/src/test.ts",
+            "tsConfig": "projects/ngx-dom-navigator/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-dom-navigator/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-dom-navigator/tsconfig.lib.json",
+              "projects/ngx-dom-navigator/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-dom-navigator"
 }
