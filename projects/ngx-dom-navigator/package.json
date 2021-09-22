@@ -9,7 +9,8 @@
 	"keywords": [
 		"dom-navigator",
 		"angular dom navigator",
-		"htmlnavigator"
+		"htmlnavigator",
+		"ngx-dom-navigator"
 	],
 	"peerDependencies": {},
 	"dependencies": {
