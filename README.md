@@ -36,7 +36,7 @@ Enchanced version of [http://rmariuzzo.github.io/dom-navigator/](https://rmariuz
 }
 
 li {
-  background-color: #283046;
+  background-color: #572525;
   border-color: #3b4253 !important;
   color: #b4b7bd;
   width: 50px;
@@ -50,7 +50,7 @@ li {
 }
 
 li.selected {
-  background-color: #3aa8e0 !important;
+  background-color: #e0ab3a !important;
   color: #fff !important;
 }
 

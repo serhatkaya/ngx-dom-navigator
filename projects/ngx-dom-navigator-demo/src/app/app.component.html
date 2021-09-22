@@ -1,0 +1,10 @@
+<style></style>
+<ul id="context">
+	<li
+		(click)="click(code)"
+		*ngFor="let code of codes; let i = index"
+		[class]="i > 30 && i < 40 ? 'ignored-class' : ''"
+	>
+		{{ code }}
+	</li>
+</ul>
