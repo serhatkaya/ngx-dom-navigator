@@ -1,19 +1,19 @@
 {
-  "name": "ngx-dom-navigator",
-  "author": "Serhat KAYA",
-  "repository": "https://github.com/serhatkaya/ngx-dom-navigator",
-  "homepage": "https://github.com/serhatkaya/ngx-dom-navigator",
-  "description": "HTML Dom element navigation with keyboard keys.",
-  "license": "MIT",
-  "version": "1.0.4",
-  "keywords": [
-    "dom-navigator",
-    "angular dom navigator",
-    "htmlnavigator"
-  ],
-  "peerDependencies": {},
-  "dependencies": {
-    "rxjs": "^7.3.0",
-    "tslib": "^2.0.0"
-  }
+	"name": "ngx-dom-navigator",
+	"author": "Serhat KAYA",
+	"repository": "https://github.com/serhatkaya/ngx-dom-navigator",
+	"homepage": "https://github.com/serhatkaya/ngx-dom-navigator",
+	"description": "HTML Dom element navigation with keyboard keys.",
+	"license": "MIT",
+	"version": "1.0.5",
+	"keywords": [
+		"dom-navigator",
+		"angular dom navigator",
+		"htmlnavigator"
+	],
+	"peerDependencies": {},
+	"dependencies": {
+		"rxjs": "^7.3.0",
+		"tslib": "^2.0.0"
+	}
 }

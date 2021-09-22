@@ -1,7 +1,7 @@
 /*
  * Public API Surface of ngx-dom-navigator
  * Author: Serhat KAYA github.com/serhatkaya
- * Version: 1.0.4
+ * Version: 1.0.5
  */
 
 
