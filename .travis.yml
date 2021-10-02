@@ -13,28 +13,23 @@ cache:
   directories:
     - $HOME/.npm
 
+
+script: echo "Running"
+
 jobs: 
   include:
     - stage: publish-to-npm
-      script:
-        - npm run build-lib
-
+      script: npm run build-lib
         before_deploy:
           - cd dist/ngx-dom-navigator
-
         deploy:
           provider: npm
           email: 'serhatkaya.abarth@gmail.com'
           api_key: $NPM_TOKEN
           on:
             branch: master
-
     - stage: publish-pages
-        script:
-          - cd ..
-          - cd ngx-dom-navigator-demo
-          - npm run build
-          
+        script: cd .. && cd ngx-dom-navigator-demo && npm run build
         deploy:
           provider: pages
           skip-cleanup: true
