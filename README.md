@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/serhatkaya/ngx-dom-navigator.svg?branch=master)](https://travis-ci.com/github/serhatkaya/ngx-dom-navigator)
+
 # ngx-dom-navigator
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
