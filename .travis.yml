@@ -23,6 +23,7 @@ deploy:
   - provider: npm
     email: 'serhatkaya.abarth@gmail.com'
     api_key: $NPM_TOKEN
+    local-dir: dist/ngx-dom-navigator
     on:
       branch: master
   - provider: pages
