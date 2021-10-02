@@ -1,10 +1,10 @@
 {
-	"name": "ngx-dom-navigator",
-	"version": "1.0.5.0",
+	"name": "dom-navigator",
+	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve ngx-dom-navigator-demo",
-		"build-lib": "ng build ngx-dom-navigator",
+		"build-lib": "ng build ngx-dom-navigator --prod",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",

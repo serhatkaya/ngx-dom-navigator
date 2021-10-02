@@ -1,41 +1,22 @@
-dist: trusty
-sudo: false
-language: node_js
-node_js: node
-
+sudo: required
 branches:
   only:
     - master
 
-  except:
-    - /^v\d+\.\d+\.\d+$/
+language: node_js
 
-install:
-  - npm ci
-cache:
-  directories:
-    - $HOME/.npm
+node_js:
+  - node
 script:
-  - npm run build-lib
-  - npm run build
+  - npm run test-ci
+  - npm run build-ci
+before_deploy:
+  - cd dist/ngx-dom-navigator
 
 deploy:
-  - provider: npm
-    email: 'serhatkaya.abarth@gmail.com'
-    api_key: $NPM_TOKEN
-    local-dir: dist/ngx-dom-navigator
-    on:
-      branch: master
-  - provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
-    local-dir: dist/ngx-dom-navigator-demo
-    on:
-      branch: master
-
-git:
-  depth: 3
-
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  provider: npm
+  email: serhatkaya.abarth@gmail.com
+  skip_cleanup: true
+  api_key: $NPM_TOKEN
+  on:
+    branch: master

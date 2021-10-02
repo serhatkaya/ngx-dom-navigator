@@ -5,7 +5,7 @@
 	"homepage": "https://github.com/serhatkaya/ngx-dom-navigator",
 	"description": "HTML Dom element navigation with keyboard keys.",
 	"license": "MIT",
-	"version": "1.0.5.0",
+	"version": "1.0.5",
 	"keywords": [
 		"dom-navigator",
 		"angular dom navigator",
