@@ -8,8 +8,7 @@ language: node_js
 node_js:
   - node
 script:
-  - npm run test-ci
-  - npm run build-ci
+  - npm run build-lib
 before_deploy:
   - cd dist/ngx-dom-navigator
 
