@@ -14,7 +14,6 @@ cache:
     - $HOME/.npm
 script:
   - npm run build-lib
-  - cd dist/
 
 deploy:
   provider: npm
