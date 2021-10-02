@@ -12,30 +12,41 @@ install:
 cache:
   directories:
     - $HOME/.npm
-script:
-  - npm run build-lib
-  - npm run build
 
-deploy:
-- provider: npm
-  email: 'serhatkaya.abarth@gmail.com'
-  api_key: $NPM_TOKEN
-  on:
-    branch: master
-- provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep-history: true
-  local-dir: dist/ngx-dom-navigator-demo
-  on:
-    branch: master
-  
+jobs: 
+  include:
+    - stage: publish-to-npm
+      script:
+        - npm run build-lib
+
+        before_deploy:
+          - cd dist/ngx-dom-navigator
+
+        deploy:
+          provider: npm
+          email: 'serhatkaya.abarth@gmail.com'
+          api_key: $NPM_TOKEN
+          on:
+            branch: master
+
+    - stage: publish-pages
+        script:
+          - cd ..
+          - cd ngx-dom-navigator-demo
+          - npm run build
+          
+        deploy:
+          provider: pages
+          skip-cleanup: true
+          github-token: $GITHUB_TOKEN
+          keep-history: true
+          local-dir: dist/ngx-dom-navigator-demo
+          on:
+            branch: master
+        
 
 git:
   depth: 3
-
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
 
 branches:
   except:
