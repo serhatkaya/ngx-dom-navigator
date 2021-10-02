@@ -1,5 +1,6 @@
-import { DomNavigatorMode, DomNavigatorSettings } from "./interfaces/dom-navigator-settings.i";
-import { DomNavigatorElement } from "./interfaces/dom-navigator.element.i";
+import { DomNavigatorMode, DomNavigatorSettings } from './interfaces/dom-navigator-settings.i';
+import { DomNavigatorElement } from './interfaces/dom-navigator.element.i';
+import { Subject } from 'rxjs';
 
 export class DomNavigator {
     private $doc: Document;
@@ -9,11 +10,11 @@ export class DomNavigator {
     private $keys: Array<Function>;
     private $selected: HTMLLIElement;
     private $ignoredClassList: Array<string>;
-
+    public $selectionSubject: Subject<any>;
     constructor(container: DomNavigatorElement, settings: DomNavigatorSettings) {
         this.$doc = window.document;
         this.$container = container;
-        this.settings = this.DefaultSettings;
+        this.settings = DomNavigator.DefaultSettings;
         Object.keys(settings).forEach(key => {
             if (settings[key])
                 this.settings[key] = settings[key];
@@ -103,7 +104,7 @@ export class DomNavigator {
      * @returns {{mode: string, selected: string, left: number, up: number, right: number, down: number, cols: number}}
      * @constructor
      */
-    get DefaultSettings(): DomNavigatorSettings {
+    static get DefaultSettings(): DomNavigatorSettings {
         return {
             mode: DomNavigatorMode.auto,
             selectedClassName: 'selected',
@@ -155,6 +156,7 @@ export class DomNavigator {
         }
 
         this.enable();
+        this.$selectionSubject = new Subject();
     }
 
     /**
@@ -317,7 +319,21 @@ export class DomNavigator {
                     break;
                 }
 
-                next = this.$selected.previousElementSibling;
+                let elToSelect = this.$selected.previousElementSibling;
+                var count = this.$container.childNodes.length;
+                let attempt = 0;
+                while (this.findCommonElement(elToSelect?.classList, this.$ignoredClassList)) {
+                    if (attempt == count) {
+                        break;
+                    }
+                    attempt++;
+                    elToSelect = elToSelect.previousElementSibling;
+                }
+
+                if (!elToSelect) {
+                    break;
+                }
+                next = elToSelect;
                 break;
 
             case DomNavigatorMode.grid:
@@ -383,8 +399,21 @@ export class DomNavigator {
                     next = this.elements()[0];
                     break;
                 }
+                let elToSelect = this.$selected.nextElementSibling;
+                var count = this.$container.childNodes.length;
+                let attempt = 0;
+                while (this.findCommonElement(elToSelect?.classList, this.$ignoredClassList)) {
+                    if (attempt == count) {
+                        break;
+                    }
+                    attempt++;
+                    elToSelect = elToSelect.nextElementSibling;
+                }
 
-                next = this.$selected.nextElementSibling;
+                if (!elToSelect) {
+                    break;
+                }
+                next = elToSelect;
                 break;
 
             case DomNavigatorMode.vertical:
@@ -448,7 +477,21 @@ export class DomNavigator {
                     break;
                 }
 
-                next = this.$selected.nextElementSibling;
+                let elToSelect = this.$selected.nextElementSibling;
+                var count = this.$container.childNodes.length;
+                let attempt = 0;
+                while (this.findCommonElement(elToSelect?.classList, this.$ignoredClassList)) {
+                    if (attempt == count) {
+                        break;
+                    }
+                    attempt++;
+                    elToSelect = elToSelect.nextElementSibling;
+                }
+
+                if (!elToSelect) {
+                    break;
+                }
+                next = elToSelect;
                 break;
 
             case DomNavigatorMode.grid:
@@ -502,6 +545,7 @@ export class DomNavigator {
         // Select given element.
         this.addClass(el, this.settings.selectedClassName);
         this.$selected = el;
+        this.$selectionSubject.next(el);
     }
 
     /**
@@ -592,7 +636,6 @@ export class DomNavigator {
     }
 
     private findCommonElement(array1, array2) {
-
         // Loop for array1
         for (let i = 0; i < array1.length; i++) {
 

@@ -8,6 +8,12 @@ Library that allow keyboard navigation through DOM elements (←↑→↓).
 
 Enchanced version of [http://rmariuzzo.github.io/dom-navigator/](https://rmariuzzo.github.io/dom-navigator/)
 
+## Version 1.0.5
+
+- Added indexSubject to subscribe change of selection, emits the selected element.
+
+- Fixed ignoredClassList not working on horizontal, vertical mode.
+
 ## Installation
 
 `npm install ngx-dom-navigator`
@@ -16,51 +22,58 @@ Enchanced version of [http://rmariuzzo.github.io/dom-navigator/](https://rmariuz
 
 ###### TS
 
-`import { DomNavigatorElement, DomNavigator } from 'ngx-dom-navigator';`
+```js
+import { DomNavigatorElement, DomNavigator } from 'ngx-dom-navigator';
 
-`let container = document.querySelector('#context') as DomNavigatorElement;`
+let container = document.querySelector('#context') as DomNavigatorElement;
 
-`let navigator = new DomNavigator(container, { mode: DomNavigatorMode.auto, selectedClassName: 'selected' });`
+let navigator = new DomNavigator(
+  container, {
+      mode: DomNavigatorMode.auto,
+      selectedClassName: 'selected'
+     });`;
+```
 
 ###### HTML
 
-```markdown
+```html
 <style>
-    ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  border-color: #3b4253;
-  overflow: hidden;
-  height: 300px;
-}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		border-color: #3b4253;
+		overflow: hidden;
+		height: 300px;
+	}
 
-li {
-  background-color: #283046;
-  border-color: #3b4253 !important;
-  color: #b4b7bd;
-  width: 50px;
-  position: relative;
-  margin: 0.25rem;
-  display: block;
-  padding: 1rem;
-  border: 1px solid rgba(34, 41, 47, 0.125);
-  float: left;
-  font-size: 16px;
-}
+	li {
+		background-color: #572525;
+		border-color: #3b4253 !important;
+		color: #b4b7bd;
+		width: 50px;
+		position: relative;
+		margin: 0.25rem;
+		display: block;
+		padding: 1rem;
+		border: 1px solid rgba(34, 41, 47, 0.125);
+		float: left;
+		font-size: 16px;
+	}
 
-li.selected {
-  background-color: #3aa8e0 !important;
-  color: #fff !important;
-}
-
+	li.selected {
+		background-color: #e0ab3a !important;
+		color: #fff !important;
+	}
 </style>
 <ul id="context">
-      <li (click)="click(code)"
-        *ngFor="let code of codes; let i = index"
-        [class]="i > 30 && i < 40 ? 'ignored-class' : ''">
-        {{ code }}
-      </li>
+	<li
+		(click)="click(code)"
+		*ngFor="let code of codes; let i = index"
+		[class]="i > 30 && i < 40 ? 'ignored-class' : ''"
+	>
+		{{ code }}
+	</li>
 </ul>
 ```
 
@@ -74,6 +87,7 @@ li.selected {
 - up: Key code for up navigation.
 - select: Key code for trigger click event (default ENTER)
 - ignoredClassList: The classname you want to ignore for navigator.
+- indexSubject: RxJs subject that emits the change of selection.
 
 ## Functions
 
