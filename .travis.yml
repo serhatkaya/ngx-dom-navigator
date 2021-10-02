@@ -14,13 +14,22 @@ cache:
     - $HOME/.npm
 script:
   - npm run build-lib
+  - npm run build
 
 deploy:
-  provider: npm
+- provider: npm
   email: 'serhatkaya.abarth@gmail.com'
   api_key: $NPM_TOKEN
   on:
     branch: master
+- provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: dist/ngx-dom-navigator-demo
+  on:
+    branch: master
+  
 
 git:
   depth: 3

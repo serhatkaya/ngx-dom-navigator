@@ -9,7 +9,7 @@
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"build-lib-watch": "ng build ngx-dom-navigator --watch",
-		"build": "ng build",
+		"build": "ng build ngx-dom-navigator-demo",
 		"commit": "git-cz",
 		"lint-lib": "ng lint ngx-dom-navigator",
 		"travis-deploy-once": "travis-deploy-once --pro",
