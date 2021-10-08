@@ -8,6 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## HTML Dom navigator library.
 
 Library that allow keyboard navigation through DOM elements (←↑→↓).
+Demo : https://ngx-dom-navigator.vercel.app/
 
 Enchanced version of [http://rmariuzzo.github.io/dom-navigator/](https://rmariuzzo.github.io/dom-navigator/)
 
