@@ -1,7 +1,9 @@
 [![Build Status](https://travis-ci.com/serhatkaya/ngx-dom-navigator.svg?branch=master)](https://travis-ci.com/github/serhatkaya/ngx-dom-navigator)
 ![License](https://img.shields.io/github/license/serhatkaya/ngx-dom-navigator.svg)
 ![issues](https://img.shields.io/github/issues/serhatkaya/ngx-dom-navigator.svg)
-<a href="https://www.buymeacoffee.com/serhatkaya" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
+[![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/serhatkaya)
+
 
 # ngx-dom-navigator
 
