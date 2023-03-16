@@ -5,7 +5,7 @@
 	"homepage": "https://github.com/serhatkaya/ngx-dom-navigator",
 	"description": "HTML Dom element navigation with keyboard keys.",
 	"license": "MIT",
-	"version": "1.0.5-release",
+	"version": "2.0.0",
 	"keywords": [
 		"dom-navigator",
 		"angular dom navigator",
@@ -13,10 +13,7 @@
 		"ngx-dom-navigator"
 	],
 	"peerDependencies": {},
-	"dependencies": {
-		"rxjs": "^7.3.0",
-		"tslib": "^2.0.0"
-	},
+	"dependencies": {},
 	"release": {
 		"pkgRoot": "dist/ngx-dom-navigator"
 	}

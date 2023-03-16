@@ -1,10 +1,9 @@
 /*
  * Public API Surface of ngx-dom-navigator
  * Author: Serhat KAYA github.com/serhatkaya
- * Version: 1.0.5-rela
+ * Version: 2.0.0
  */
 
-
 export * from './lib/dom-navigator';
-export * from './lib/interfaces/dom-navigator-settings.i';
-export * from './lib/interfaces/dom-navigator.element.i';
+export * from './lib/interfaces/index';
+export * from './lib/enums/index';
